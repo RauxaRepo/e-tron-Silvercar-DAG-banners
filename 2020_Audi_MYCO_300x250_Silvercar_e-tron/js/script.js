@@ -22,7 +22,8 @@ var imageArray = new Array(),
     thirdFrame = false,
     efSwitch = false,
     isMLP = false,
-    checkTimer;
+    checkTimer,
+    localCopy;
 
 var outer = document.getElementById("outer"),
     outer_background = outer.getElementsByClassName("background")[0],
@@ -42,7 +43,8 @@ var outer = document.getElementById("outer"),
     inner_headline = inner.getElementsByClassName("headline")[0],
     inner_headlineText = inner.getElementsByClassName("headline")[0],
     mLock = document.getElementsByClassName("modelLockup")[0],
-    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0];
+    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0],
+    localCopy = document.getElementById('localCopyImg');
 
 var hoverCheck = false,
     disclaimerOne = false,
@@ -485,6 +487,7 @@ function animateFrameThree(){
             },"end");
             // var mLock = document.createElement("img");
             mLock.src = "1x1.png";
+            localCopy.src = "Silvercar_etron_300x250_lc.png";
             replay.addEventListener("click", resetAll);
             // mLock.classList.add("modelLockup");
             // logo_holder.after(mLock);
@@ -519,6 +522,7 @@ function animateFrameThree(){
                 TweenMax.to(mLock, .25, {x: -179, opacity:1, rotate:.01, ease: Expo.easeOut});
                 cta.style.opacity = "1";
                 replay.style.opacity = "1";
+                localCopy.style.opacity = "1";
 
                 }
             })
@@ -599,6 +603,7 @@ function resetAll() {
             TweenMax.set(mLock, {opacity:0,x:179});
             resetElement(disclaimer);
             thirdFrame = false;
+            resetElement(localCopy);
 
             outer_backgroundOne.src = "Silvercar_etron_300x250_fr1.jpg";
             rebuildHeadline("<span style='font-size:.85em'>Power your ride.</span>|");
