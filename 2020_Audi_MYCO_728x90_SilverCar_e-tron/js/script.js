@@ -20,7 +20,8 @@ var imageArray = new Array(),
     thirdFrame = false,
     efSwitch = false,
     isMLP = false,
-    checkTimer;
+    checkTimer,
+    localCopy;
 
 var outer = document.getElementById("outer"),
     outer_background = outer.getElementsByClassName("background")[0],
@@ -40,7 +41,8 @@ var outer = document.getElementById("outer"),
     inner_headline = inner.getElementsByClassName("headline")[0],
     inner_headlineText = inner.getElementsByClassName("headline")[0],
     mLock = document.getElementsByClassName("modelLockup")[0],
-    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0];
+    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0],
+    localCopy = document.getElementById('localCopyImg');
 
 var hoverCheck = false,
     disclaimerOne = false,
@@ -488,6 +490,7 @@ function animateFrameThree(){
             },"end");
             // var mLock = document.createElement("img");
             mLock.src = "1x1.png";
+            localCopy.src = "Silvercar_etron_728x90_lc.png";
             // mLock.classList.add("modelLockup");
             replay.addEventListener("click", resetAll);
             
@@ -503,9 +506,9 @@ function animateFrameThree(){
             // logo_holder.after(mLock);
             TweenMax.to(inner_headline, .25, {opacity:0, ease:Power3.easeInOut, rotate:.01});
             inner.classList.add('innerShadow');
-            TweenMax.to(document.getElementsByClassName('headlineEnd')[0],.63,{x:-j, rotate:.01, ease: Power3.easeInOut, onStart:function(){
+            TweenMax.to(document.querySelector('.headlineEnd'),.63,{x:-j, rotate:.01, ease: Power3.easeInOut, onStart:function(){
                 replay.style.display = "block";
-                document.getElementsByClassName('headlineEnd').style.opacity = '1';
+                document.querySelector('.headlineEnd').style.opacity = '1';
                 if(disclaimerThree){
                     disclaimerOne = false;
                 // disclaimer.removeAttribute("span");
@@ -533,6 +536,7 @@ function animateFrameThree(){
                 disclaimer.style.opacity = "1";
                 cta.style.opacity = "1";
                 replay.style.opacity = "1";
+                localCopy.style.opacity = "1";
 
                 }
             })
@@ -615,6 +619,7 @@ function resetAll() {
             // resetElement(mLock);
             resetElement(disclaimer);
             thirdFrame = false;
+            resetElement(localCopy);
 
             outer_backgroundOne.src = "Silvercar_etron_728x90_fr1.jpg";
             rebuildHeadline("Power your ride.|");
