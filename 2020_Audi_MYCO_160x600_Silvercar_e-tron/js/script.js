@@ -23,7 +23,8 @@ var imageArray = new Array(),
     secondFrame = false,
     thirdFrame = false,
     efSwitch = false,
-    checkTimer;
+    checkTimer,
+    localCopy;
 
 var outer = document.getElementById("outer"),
     outer_background = outer.getElementsByClassName("background")[0],
@@ -43,7 +44,8 @@ var outer = document.getElementById("outer"),
     inner_headline = inner.getElementsByClassName("headline")[0],
     // inner_headlineText = inner.getElementsByClassName("headline")[0],
     mLock = document.getElementsByClassName("modelLockup")[0],
-    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0];
+    endFrame_headCont = inner.getElementsByClassName("efHeadline_container")[0],
+    localCopy = document.getElementById('localCopyImg');
 
 var hoverCheck = false,
     disclaimerOne = false,
@@ -469,7 +471,7 @@ function animateFrameTwo(){
                 disclaimer.style.opacity = "0";
             },
             onComplete:function(){
-                console.log("here");
+                // console.log("here");
                 // inner_headline.removeAttribute("style");
                 TweenMax.set(inner_headline,{y:0,opacity:1});
                 inner_headline.innerHTML = "";
@@ -497,6 +499,7 @@ function animateFrameThree(){
             },"end");
             // mLock = document.createElement("img");
             mLock.src = "1x1.png";
+            localCopy.src = "Silvercar_etron_160x600_lc.png";
 
             replay.addEventListener("click", resetAll);
             if(outer_backgroundOne.offsetHeight < 250){
@@ -538,6 +541,7 @@ function animateFrameThree(){
                 // disclaimer.style.opacity = "1";
                 cta.style.opacity = "1";
                 replay.style.opacity = "1";
+                localCopy.style.opacity = "1";
                 }
             });
                 TweenMax.to(inner_headline, .25, {opacity:0, ease:Power3.easeInOut, rotate:.01});
@@ -623,6 +627,7 @@ function resetAll() {
             resetElement(replay);
             TweenMax.set(mLock, {opacity:0,x:148});
             resetElement(disclaimer);
+            resetElement(localCopy);
             thirdFrame = false;
             outer_backgroundOne.src = "Silvercar_etron_160x600_fr1.jpg";
             rebuildHeadline("Power your ride.|");
