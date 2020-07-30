@@ -393,6 +393,23 @@ div {
 
 }
 
+#localCopyImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  -webkit-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
 .cta{
     font-size: 10px;
     font-family: 'audi-extendedbold', sans-serif;
